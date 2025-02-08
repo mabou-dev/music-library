@@ -10,19 +10,26 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"github.com/mabou-dev/music-library/internal/album"
 	"github.com/mabou-dev/music-library/pkg/log"
 )
 
 func main() {
-        log.Setup()
+	log.Setup()
+	defer log.Sync()
 
 	router := gin.Default()
+
+	repo := album.NewAlbumRepository()
+	service := album.NewAlbumService(repo)
+	handler := album.NewAlbumHandler(service)
 
 	router.GET("/ping", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"message": "pong",
 		})
 	})
+	router.GET("/albums", handler.GetAlbums)
 
 	server := &http.Server{
 		Addr:    ":8080",

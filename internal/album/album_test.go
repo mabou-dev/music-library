@@ -8,9 +8,8 @@ import (
 func TestNewAlbum(t *testing.T) {
 	input := []string{"artist", "album"}
 	want := &Album{
-		artist: "artist",
-		name:   "album",
-		genres: []string(nil),
+		Artist: "artist",
+		Name:   "album",
 	}
 
 	got := New(input[0], input[1])
@@ -19,9 +18,8 @@ func TestNewAlbum(t *testing.T) {
 
 func TestAlbum_GetArtist(t *testing.T) {
 	input := &Album{
-		artist: "artist",
-		name:   "album",
-		genres: []string(nil),
+		Artist: "artist",
+		Name:   "album",
 	}
 	want := input.artist
 
@@ -31,9 +29,8 @@ func TestAlbum_GetArtist(t *testing.T) {
 
 func TestAlbum_GetName(t *testing.T) {
 	input := &Album{
-		artist: "artist",
-		name:   "album",
-		genres: []string(nil),
+		Artist: "artist",
+		Name:   "album",
 	}
 	want := input.name
 

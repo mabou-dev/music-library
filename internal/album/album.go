@@ -1,26 +1,14 @@
 package album
 
 type Album struct {
-	artist string
-	name   string
-	genres []string
+	Uuid   string `json:"uuid"`
+	Artist string `json:"artist"`
+	Name   string `json:"name"`
 }
 
 func New(artist string, name string) *Album {
 	a := new(Album)
-	a.artist = artist
-	a.name = name
+	a.Artist = artist
+	a.Name = name
 	return a
-}
-
-func (a *Album) GetArtist() string {
-	return a.artist
-}
-
-func (a *Album) GetName() string {
-	return a.name
-}
-
-func (a *Album) SetGenre(g string) {
-	a.genres = append(a.genres, g)
 }
