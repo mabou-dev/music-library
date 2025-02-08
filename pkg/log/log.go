@@ -7,11 +7,36 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-var logger *zap.Logger
+const (
+	DebugLevel = zapcore.DebugLevel
+	InfoLevel  = zapcore.InfoLevel
+)
+
+var (
+	logger      *zap.Logger
+	atomicLevel zap.AtomicLevel
+)
 
 func Setup() {
 	cfg := zap.NewProductionConfig()
+	cfg.Level = zap.NewAtomicLevelAt(InfoLevel)
 	logger = zap.Must(cfg.Build())
+}
+
+func SetLevel(level zapcore.Level) {
+	atomicLevel.SetLevel(level)
+}
+
+func GetLogger() *zap.Logger {
+	if logger == nil {
+		Setup()
+	}
+	return logger
+}
+
+func GetComponentLogger(component string) *zap.Logger {
+	logger := GetLogger().With(zap.String("component", component))
+	return logger
 }
 
 func Debugf(format string, value ...any) {

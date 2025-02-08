@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"context"
@@ -9,12 +9,26 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/spf13/cobra"
 
 	"github.com/mabou-dev/music-library/internal/album"
 	"github.com/mabou-dev/music-library/pkg/log"
 )
 
-func main() {
+var StartCmd = NewStartCmd()
+
+func NewStartCmd() *cobra.Command {
+
+	cmd := &cobra.Command{
+		Use:   "start",
+		Short: "start server",
+		Run:   StartExecute,
+	}
+
+	return cmd
+}
+
+func StartExecute(cmd *cobra.Command, args []string) {
 	log.Setup()
 	defer log.Sync()
 
