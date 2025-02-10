@@ -1,14 +1,14 @@
 package album
 
 type Album struct {
-	Uuid   string `json:"uuid"`
+	Id   string `json:"id"`
 	Artist string `json:"artist"`
-	Name   string `json:"name"`
+	Title   string `json:"title"`
 }
 
-func New(artist string, name string) *Album {
+func New(artist string, title string) *Album {
 	a := new(Album)
 	a.Artist = artist
-	a.Name = name
+	a.Title = title
 	return a
 }
