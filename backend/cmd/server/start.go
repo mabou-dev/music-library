@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/gin-contrib/cors"
 	"github.com/spf13/cobra"
 
 	"github.com/mabou-dev/music-library/internal/album"
@@ -34,14 +33,6 @@ func StartExecute(cmd *cobra.Command, args []string) {
 	defer log.Sync()
 
 	router := gin.Default()
-        router.Use(
-            cors.New(cors.Config{
-                AllowOrigins: []string{"*"},
-                AllowMethods: []string{"GET", "POST"},
-                AllowHeaders: []string{"Content-Type"},
-                AllowCredentials: true,
-                MaxAge: 12*time.Hour,
-        }))
 
 	repo := album.NewAlbumRepository()
 	service := album.NewAlbumService(repo)

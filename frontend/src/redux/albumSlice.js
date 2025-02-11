@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchAlbums = createAsyncThunk("albums/fetchAlbums", async () => {
-    const response = await fetch("http://localhost:8080/albums");
+    const response = await fetch("/api/albums");
     return response.json();
 });
 
