@@ -2,13 +2,13 @@ package album
 
 var albums = []Album{
 	{
-		Id:   "a",
-		Title:   "album_A",
+		Id:     "a",
+		Title:  "album_A",
 		Artist: "artist_A",
 	},
 	{
-		Id:   "b",
-		Title:   "album_B",
+		Id:     "b",
+		Title:  "album_B",
 		Artist: "artist_B",
 	},
 }
