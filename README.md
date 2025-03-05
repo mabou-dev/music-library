@@ -1,4 +1,4 @@
-# music-librarycd backend
+# music-library
 
 ## Compile
 
